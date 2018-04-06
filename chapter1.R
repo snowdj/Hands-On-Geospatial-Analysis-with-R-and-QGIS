@@ -9,7 +9,7 @@ temperature = c(morning = 20, before_noon = 23, after_noon = 25, evening = 22, n
 # Basic operations with vector
 jan_price = c(10, 20, 30)
 increase = c(1, 2, 3)
-mar_price = old_price + increase
+mar_price = jan_price + increase
 june_price = c(20, 25, 33)
 
 # Matrix
@@ -113,15 +113,31 @@ power_function2 = function(data, power){
   data^power
 }
 
+# apply
+all_prices
+apply(all_prices, 1, sd)
+apply(all_prices, 2, sum)
+
+# lapply]
 # applying power_function2 on every element of june_price column of all_prices4 dataframe
 lapply(all_prices4$june_price, power_function2, 4)
 
 # Returning a vector after using lapply
 unlist(lapply(all_prices4$june_price, power_function2, 4))
 
+
+combined2 = list(matrix(c(jan_2018, mar_2018, june_2018), nrow = 3), 
+                 matrix(c(jan_2017, mar_2017, june_2017), nrow = 3))
+combined2
+
+lapply(combined2, "[", 2, )
+
+# sapply
 # use sapply to apply a function over all elements of june_price and to return the result as a vector
 sapply(all_prices4$june_price, power_function2, 4)
 
+
+# tapply
 # Define a dataframe for prices of different items in different months in different years
 all_prices = data.frame(items = rep(c("potato", "rice", "oil"), 4), 
                         jan_price = c(10, 20, 30, 10, 18, 25, 9, 17, 24, 9, 19, 27), 
